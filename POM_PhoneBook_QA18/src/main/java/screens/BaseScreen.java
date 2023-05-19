@@ -17,11 +17,13 @@ public class BaseScreen {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public void type(MobileElement element, String text){
-        if (text == null) return;
+    public void type(MobileElement element, String text) {
         element.click();
         element.clear();
-        element.sendKeys(text);
+        if (text != null) {
+            element.sendKeys(text);
+        }
+        driver.hideKeyboard();
     }
 
     public void pause(int time){
